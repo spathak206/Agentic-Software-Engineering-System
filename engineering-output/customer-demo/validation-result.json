@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "requirement-json",
+      "status": "passed"
+    },
+    {
+      "name": "task-dependency-graph",
+      "status": "passed"
+    },
+    {
+      "name": "openapi-contract",
+      "status": "passed"
+    },
+    {
+      "name": "documentation-artifacts",
+      "status": "passed"
+    },
+    {
+      "name": "generated-python-syntax",
+      "status": "passed"
+    }
+  ],
+  "execution_policy": "Generated code and target-project commands were not executed."
+}
