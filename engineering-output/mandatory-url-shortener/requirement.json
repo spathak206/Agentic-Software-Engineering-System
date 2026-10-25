@@ -1,0 +1,21 @@
+{
+  "ambiguities": [
+    "What traffic, availability, and redirect-latency targets define scalable?",
+    "Are links private or authenticated, or is anyone allowed to create them?",
+    "Should links expire, and what is the retention policy for click events?"
+  ],
+  "assumptions": [
+    "Generated artifacts are proposals in an isolated output directory; the source project is not modified.",
+    "No generated code or project commands are executed automatically."
+  ],
+  "capabilities": [
+    "Create short links from validated HTTP or HTTPS URLs",
+    "Persist mappings and click events",
+    "Redirect visitors and expose click analytics"
+  ],
+  "change_type": "greenfield",
+  "domain": "URL shortening and click analytics",
+  "is_url_shortener": true,
+  "normalized": "Build a scalable URL shortener service with APIs, persistence, and analytics.",
+  "original": "Build a scalable URL shortener service with APIs, persistence, and analytics."
+}

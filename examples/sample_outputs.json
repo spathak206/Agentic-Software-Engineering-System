@@ -1,0 +1,78 @@
+{
+  "greenfield": {
+    "input": "Build a scalable URL shortener service with APIs, persistence, and analytics.",
+    "classification": "greenfield",
+    "key_tasks": [
+      {"id": "confirm-requirements", "depends_on": []},
+      {"id": "define-contract", "depends_on": ["confirm-requirements"]},
+      {"id": "implement-domain", "depends_on": ["confirm-requirements", "define-contract"]},
+      {"id": "verify-change", "depends_on": ["implement-domain", "define-contract"]},
+      {"id": "review-and-release", "depends_on": ["verify-change"]}
+    ],
+    "parallel_waves": [
+      ["requirements", "codebase"],
+      ["architecture", "risk"],
+      ["planning"],
+      ["artifacts"],
+      ["validation"],
+      ["review"]
+    ],
+    "generated_contract_paths": [
+      "POST /api/urls",
+      "GET /{code}",
+      "GET /api/urls/{code}/analytics"
+    ],
+    "validation": "passed",
+    "approval": "review_required"
+  },
+  "brownfield": {
+    "input": "Fix the existing API service behavior and add regression tests.",
+    "classification": "brownfield",
+    "sample_codebase": ["service.py", "routes.py"],
+    "key_tasks": [
+      {"id": "confirm-requirements", "depends_on": []},
+      {"id": "define-contract", "depends_on": ["confirm-requirements"]},
+      {"id": "implement-domain", "depends_on": ["confirm-requirements", "define-contract"]},
+      {"id": "verify-change", "depends_on": ["implement-domain", "define-contract"]},
+      {"id": "review-and-release", "depends_on": ["verify-change"]}
+    ],
+    "parallel_waves": [
+      ["requirements", "codebase"],
+      ["architecture", "risk"],
+      ["planning"],
+      ["artifacts"],
+      ["validation"],
+      ["review"]
+    ],
+    "codebase_observation": "Existing service.py and routes.py are reported as impacted modules for human confirmation.",
+    "validation": "passed",
+    "approval": "review_required"
+  },
+  "ambiguous": {
+    "input": "Make the existing service faster and more reliable.",
+    "classification": "brownfield",
+    "open_questions": [
+      "Which measurable service-level targets and workload should acceptance use?",
+      "What user-facing or service interface should be exposed?",
+      "What acceptance criteria and edge cases must tests cover?",
+      "Which users, permissions, and operational constraints are in scope?"
+    ],
+    "key_tasks": [
+      {"id": "confirm-requirements", "depends_on": []},
+      {"id": "define-contract", "depends_on": ["confirm-requirements"]},
+      {"id": "implement-domain", "depends_on": ["confirm-requirements", "define-contract"]},
+      {"id": "verify-change", "depends_on": ["implement-domain", "define-contract"]},
+      {"id": "review-and-release", "depends_on": ["verify-change"]}
+    ],
+    "parallel_waves": [
+      ["requirements", "codebase"],
+      ["architecture", "risk"],
+      ["planning"],
+      ["artifacts"],
+      ["validation"],
+      ["review"]
+    ],
+    "validation": "passed",
+    "approval": "review_required"
+  }
+}

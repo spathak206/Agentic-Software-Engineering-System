@@ -1,0 +1,115 @@
+{
+  "execution": "parallel DAG with dependency barriers and one retry for transient I/O errors",
+  "worker_limit": 4,
+  "trace": [
+    {
+      "step": "requirements",
+      "status": "completed",
+      "attempts": 1,
+      "wave": 1,
+      "parallel_group": [
+        "codebase",
+        "requirements"
+      ],
+      "depends_on": []
+    },
+    {
+      "step": "codebase",
+      "status": "completed",
+      "attempts": 1,
+      "wave": 1,
+      "parallel_group": [
+        "codebase",
+        "requirements"
+      ],
+      "depends_on": []
+    },
+    {
+      "step": "architecture",
+      "status": "completed",
+      "attempts": 1,
+      "wave": 2,
+      "parallel_group": [
+        "architecture",
+        "risk"
+      ],
+      "depends_on": [
+        "codebase",
+        "requirements"
+      ]
+    },
+    {
+      "step": "risk",
+      "status": "completed",
+      "attempts": 1,
+      "wave": 2,
+      "parallel_group": [
+        "architecture",
+        "risk"
+      ],
+      "depends_on": [
+        "codebase",
+        "requirements"
+      ]
+    },
+    {
+      "step": "planning",
+      "status": "completed",
+      "attempts": 1,
+      "wave": 3,
+      "parallel_group": [
+        "planning"
+      ],
+      "depends_on": [
+        "architecture",
+        "risk"
+      ]
+    },
+    {
+      "step": "artifacts",
+      "status": "completed",
+      "attempts": 1,
+      "wave": 4,
+      "parallel_group": [
+        "artifacts"
+      ],
+      "depends_on": [
+        "architecture",
+        "planning",
+        "requirements",
+        "risk"
+      ]
+    },
+    {
+      "step": "validation",
+      "status": "completed",
+      "attempts": 1,
+      "wave": 5,
+      "parallel_group": [
+        "validation"
+      ],
+      "depends_on": [
+        "artifacts",
+        "planning"
+      ]
+    },
+    {
+      "step": "review",
+      "status": "completed",
+      "attempts": 1,
+      "wave": 6,
+      "parallel_group": [
+        "review"
+      ],
+      "depends_on": [
+        "requirements",
+        "validation"
+      ]
+    }
+  ],
+  "independent_first_wave": [
+    "requirements",
+    "codebase"
+  ],
+  "output": "D:\\AI-ML Learning\\Use Case\\Project\\engineering-output\\mandatory-url-shortener"
+}

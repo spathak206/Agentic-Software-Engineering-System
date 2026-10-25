@@ -1,0 +1,56 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Step 1 - Generate demo bundle",
+			"type": "shell",
+			"command": "C:/Users/91886/AppData/Local/Programs/Python/Python38-32/python.exe",
+			"args": [
+				"-m",
+				"agentic_sdlc",
+				"--requirement",
+				"Build a scalable URL shortener service with APIs, persistence, and analytics.",
+				"--project-root",
+				".",
+				"--output",
+				".\\engineering-output\\step-by-step-demo"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Step 2 - Test generated service",
+			"type": "shell",
+			"command": "C:/Users/91886/AppData/Local/Programs/Python/Python38-32/python.exe",
+			"args": [
+				"-m",
+				"unittest",
+				"discover",
+				"-s",
+				".\\engineering-output\\step-by-step-demo\\generated\\tests",
+				"-t",
+				".\\engineering-output\\step-by-step-demo\\generated",
+				"-v"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Step 3 - Start URL shortener",
+			"type": "shell",
+			"command": "C:/Users/91886/AppData/Local/Programs/Python/Python38-32/python.exe",
+			"args": [
+				"-m",
+				"agentic_sdlc.url_shortener",
+				"--database",
+				".\\engineering-output\\step-by-step-demo\\generated\\demo.sqlite3",
+				"--host",
+				"127.0.0.1",
+				"--port",
+				"8765"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
