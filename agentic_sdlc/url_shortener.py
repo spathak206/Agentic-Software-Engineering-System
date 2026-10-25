@@ -10,7 +10,7 @@ import threading
 from contextlib import closing
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Type
 from urllib.parse import urlsplit
 
 
@@ -144,7 +144,9 @@ def validate_target_url(target_url: Any) -> None:
         raise InvalidTargetUrl("target_url must not contain embedded credentials")
 
 
-def create_handler(store: UrlShortenerStore, public_base_url: str):
+def create_handler(
+    store: UrlShortenerStore, public_base_url: str
+) -> Type[BaseHTTPRequestHandler]:
     class UrlShortenerHandler(BaseHTTPRequestHandler):
         def _send_json(self, status: int, payload: Dict[str, Any]) -> None:
             body = json.dumps(payload).encode("utf-8")
