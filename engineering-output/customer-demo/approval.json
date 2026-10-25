@@ -1,0 +1,5 @@
+{
+  "status": "review_required",
+  "approved_by_human": false,
+  "note": "Approval applies to this proposal only; it does not modify or deploy project code."
+}

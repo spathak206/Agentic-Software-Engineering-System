@@ -1,0 +1,193 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "URL shortener API",
+    "version": "1.0.0",
+    "description": "Generated proposal. Confirm assumptions before implementation."
+  },
+  "paths": {
+    "/api/urls": {
+      "post": {
+        "summary": "Create a short link",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "target_url"
+                ],
+                "properties": {
+                  "target_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 2048
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Short link created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShortUrl"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid URL or request body"
+          },
+          "413": {
+            "description": "Request body exceeds the size limit"
+          }
+        }
+      }
+    },
+    "/{code}": {
+      "get": {
+        "summary": "Record a click and redirect",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,32}$"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Redirect to the original URL",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Short code not found"
+          }
+        }
+      }
+    },
+    "/api/urls/{code}/analytics": {
+      "get": {
+        "summary": "Get click analytics",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,32}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Click totals and daily breakdown",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Analytics"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Short code not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ShortUrl": {
+        "type": "object",
+        "required": [
+          "code",
+          "target_url",
+          "created_at",
+          "short_url"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "target_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "short_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "Analytics": {
+        "type": "object",
+        "required": [
+          "code",
+          "target_url",
+          "created_at",
+          "click_count",
+          "daily_clicks"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "target_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "click_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "daily_clicks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "date",
+                "clicks"
+              ],
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "clicks": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

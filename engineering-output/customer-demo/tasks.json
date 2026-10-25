@@ -1,0 +1,49 @@
+[
+  {
+    "id": "confirm-requirements",
+    "title": "Confirm scope and measurable acceptance criteria",
+    "depends_on": [],
+    "owner": "human + requirement analyst",
+    "deliverable": "Approved scope, SLOs, and resolved ambiguity list",
+    "description": "Resolve 3 open questions and agree the measurable behavior."
+  },
+  {
+    "id": "define-contract",
+    "title": "Define the API contract and error semantics",
+    "depends_on": [
+      "confirm-requirements"
+    ],
+    "owner": "architecture agent",
+    "deliverable": "Versioned OpenAPI contract"
+  },
+  {
+    "id": "implement-domain",
+    "title": "Implement domain behavior and persistence",
+    "depends_on": [
+      "confirm-requirements",
+      "define-contract"
+    ],
+    "owner": "implementation agent",
+    "deliverable": "Modular service and persistence adapter"
+  },
+  {
+    "id": "verify-change",
+    "title": "Add unit, API integration, and failure-path tests",
+    "depends_on": [
+      "implement-domain",
+      "define-contract"
+    ],
+    "owner": "test agent",
+    "deliverable": "Repeatable automated tests and validation report"
+  },
+  {
+    "id": "review-and-release",
+    "title": "Review risks and approve the proposed change",
+    "depends_on": [
+      "verify-change"
+    ],
+    "owner": "human reviewer",
+    "deliverable": "Explicit approval before applying or deploying changes",
+    "description": "Address 5 identified risks before release."
+  }
+]

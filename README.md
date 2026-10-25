@@ -39,6 +39,8 @@ Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/api/urls -ContentType 
 
 Open the returned `short_url` to record a redirect click. Retrieve analytics at `http://127.0.0.1:8000/api/urls/{code}/analytics`.
 
+For a complete customer-facing walkthrough, including Windows Command Prompt commands, pre-demo checks, a live API flow, and a talk track, see [the customer demo guide](examples/customer-demo.md).
+
 ## Try the example scenarios
 
 Each requirement is available under `examples\`. Run each with a distinct output directory:
